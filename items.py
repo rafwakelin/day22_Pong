@@ -3,6 +3,7 @@ ALIGNMENT = "center"
 FONT = ("Courier", 80, "normal")
 
 
+# Paddles
 class Paddle(Turtle):
     """Creates the paddles, takes as input a tuple of z and y locations and puts the paddles on these locations"""
     def __init__(self, position):
@@ -24,6 +25,7 @@ class Paddle(Turtle):
         self.goto(self.xcor(), new_y)
 
 
+# Ball
 class Ball(Turtle):
     """Creates the ball and puts it in the center of the court"""
     def __init__(self):
@@ -55,10 +57,11 @@ class Ball(Turtle):
         self.xmove *= -1
 
 
+# Score
 class Score(Turtle):
     def __init__(self, score_position):
-        super().__init__()
         """Creates a score board"""
+        super().__init__()
         self.score = 0
         self.color("white")
         self.hideturtle()
@@ -71,3 +74,49 @@ class Score(Turtle):
         self.score += 1
         self.clear()
         self.write(arg=f"{self.score}", align=ALIGNMENT, font=FONT)
+
+
+# Screen
+def set_screen():
+    line = Turtle()
+    line.hideturtle()
+    line.goto(0, 280)
+    line.pencolor("white")
+    line.pensize(2)
+    line.setheading(270)
+    for _ in range(28):
+        line.pendown()
+        line.forward(10)
+        line.penup()
+        line.forward(10)
+
+    line.pensize(4)
+    line.penup()
+    line.setheading(0)
+    line.goto(-490, 290)
+    line.pendown()
+    line.goto(480, 290)
+
+    line.penup()
+    line.setheading(0)
+    line.goto(-490, -280)
+    line.pendown()
+    line.goto(480, -280)
+
+    line.penup()
+    line.setheading(270)
+    line.goto(480, 290)
+    line.pendown()
+    line.goto(480, -280)
+
+    line.penup()
+    line.setheading(270)
+    line.goto(-490, 290)
+    line.pendown()
+    line.goto(-490, -280)
+
+    line.penup()
+    line.shape("circle")
+    line.goto(0, 0)
+    line.shapesize(4)
+    line.showturtle()
