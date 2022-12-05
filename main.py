@@ -1,5 +1,5 @@
-from turtle import Screen, Turtle
-from items import Paddle, Ball, Score
+from turtle import Screen
+from items import Paddle, Ball, Score, set_screen
 
 # Creates the screen
 screen = Screen()
@@ -7,50 +7,9 @@ screen.setup(width=1050, height=650)
 screen.bgcolor("black")
 screen.title("Pong!")
 
-# Draws the center line on the screen
+# Draws the court on the screen
 screen.tracer(0)
-line = Turtle()
-line.hideturtle()
-line.goto(0, 280)
-line.pencolor("white")
-line.pensize(5)
-line.setheading(270)
-for _ in range(28):
-    line.pendown()
-    line.forward(10)
-    line.penup()
-    line.forward(10)
-
-line.penup()
-line.setheading(0)
-line.goto(-490, 290)
-line.pendown()
-line.goto(480, 290)
-
-line.penup()
-line.setheading(0)
-line.goto(-490, -280)
-line.pendown()
-line.goto(480, -280)
-
-line.penup()
-line.setheading(270)
-line.goto(480, 290)
-line.pendown()
-line.goto(480, -280)
-
-line.penup()
-line.setheading(270)
-line.goto(-490, 290)
-line.pendown()
-line.goto(-490, -280)
-
-line.penup()
-line.shape("circle")
-line.goto(0, 0)
-line.shapesize(2)
-line.color("white")
-line.showturtle()
+set_screen()
 
 # Creates the players paddles, the ball, and scoreboard
 r_paddle = Paddle((450, 0))
